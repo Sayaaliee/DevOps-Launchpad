@@ -54,11 +54,27 @@ This ensures automated and consistent deployments.
 
 ---
 
-## 🐳 Run Locally with Docker
+## 🐳 Run with Docker (Local Deployment)
 
 You can run the application locally using Docker.
 
-### Build the Docker image
+Build the Docker image:
 
-```bash
 docker build -t devops-launchpad .
+
+Run the container:
+
+docker run -d -p 8080:80 devops-launchpad
+
+Then open in your browser:
+
+http://localhost:8080
+
+
+## 🌐 Cloud Deployment
+
+The application was deployed using Docker containers on an AWS EC2 instance through a Jenkins CI/CD pipeline.
+
+Example deployment URL (may change if the instance is terminated):
+
+http://43.205.216.138:81
