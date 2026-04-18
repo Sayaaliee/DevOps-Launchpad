@@ -1,0 +1,24 @@
+- name: Deploy Docker Container
+  hosts: web
+  become: false   # IMPORTANT for local
+
+  tasks:
+    - name: Pull latest Docker image
+      docker_image:
+        name: sayaalieee/my-app
+        tag: "1.0"
+        source: pull
+
+    - name: Stop and remove old container
+      docker_container:
+        name: app
+        state: absent
+        force_kill: true
+
+    - name: Run new container
+      docker_container:
+        name: app
+        image: sayaalieee/my-app:1.0
+        state: started
+        ports:
+          - "8083:80"
